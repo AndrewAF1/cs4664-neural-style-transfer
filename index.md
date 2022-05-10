@@ -1,4 +1,4 @@
-﻿# Experimentation of Image-To-Image Translation
+# Experimentation of Image-To-Image Translation
 
 Welcome! So you're interested computer vision-- where do you start? **Image-to-image translation** is a specific class of vision and graphics problems that can help introduce you into the field. First, let's define what image-to-image translation is: given images in some source domain A, the goal is to map the image into some target domain B while still retaining the content representations. It's analagous to how we might use technology like Google Translate to translate sentences from English to Spanish so that they have the same meaning. Effective deep learning models can do this translation much quicker and more efficiently than the average person. 
 
@@ -44,27 +44,40 @@ Install the required dependencies-- these can also be found in the file [pytorch
 Now you are ready to begin working with your models!
 
 ## Black-and-White to Color
-Description, using Pix2Pix
+The Pix2Pix model that's available through this repository can handle multiple types of translation problems-- we'll specifically be looking at taking black-and-white images and colorizing them. We've provided a Natural Color Dataset (NCD) filled with paired images of different fruits and vegetables with over 700 images and the Landscapes dataset with over 7,000 images for training and testing. You're free to use your own data, but make sure that the data is organized into the correct structure so that the model will be able to access it. From there, train the model with the paired dataset. In the interest of understanding how this model works, we've also included a few experiments we ran and what the results meant to us. 
 
 ### Data Pre-Processing
-Subdirectory structure, explain the data we used
+If you do choose to use your own dataset, there will be some pre-processing in the form directory structures that need to be done. TODO 
 
 ### Training
-Commands for training
+Commands for training; for best results, train for...; talk about visdom server TODO
 
 ### Experiment 1: Running Open-Source Implementation with NCD
+We recommend that you run this experiment as well--by running the implementation with NCD, we were able to gain insight into how the default model functions. Note that we had trouble running the model on our local computers, so we switched over to Virginia Tech's Advanced Research Computing (ARC) systems so that we could use the GPUs to speed up training time. We then had to restructure the NCD (see above) before running the model so that it would be able to find the images. Originally, we ran the ```combine.py``` to combine the grayscale and color pairs before feeding them into the model; we discovered later that although this step is necessary for the other translations, it caused color bleeding and other issues when used for the colorization model. 
 
 ### Experiment 2: Hyperparameter Optimization
+The clear next step was to optimize this model so that it would be able to generate the most realistic looking color images. To do this, we needed to test out different values for some hyperparameters. We initially planned on trying out different combinations-- however, since the training times were so lengthy, we decided to use the ```tune.py``` script to run each model with a variety of options for an individual hyperparameter and combine the best performing hyperparameters at the end. In the interest of time, we also chose to focus on 4 hyperparameters: batch size, learning rates, number of epochs, and decay epoch. 
+
+We had two runs of this experiment. In the initial run, we focused on all aforementioned hyper parameters. The goals for this run was to to test a large variety of values, so we set the total number of epochs to be 10 (`n_epochs` + `n_epochs_decay`). We kept this number small to ensure the training time was feasible. We found that batch size of 1 performed significantly better than the other values, so we used that as a default in the second run of this experiment. The ratio of number of epochs and number of decay epochs seemed to have little impact on the results, but it may have been due to the fact that we had a low overall number of epochs.  
+
+In the second run of this experiment, we tried to have a more focused approach. We used the default learning rate as a baseline and chose value close to it and a value a bit further from it. We also increased the total number of epochs to 50 to allow our model to train gain more exposure to the dataset while still allowing us to train in a reasonable window of time. We found that the ratio of epochs still did not same to make much of a difference in performance of the model. 
+
+TODO Done?
 
 ### Experiment 3: Comparison of Generator/Discriminator Architectures
+There are multiple different architectures that the generator and discriminator models can have. As an extension of the previous experiment, we tried training our model with the optimal hyper parameters with the architectures...
+
+TODO Complete
 
 ### Experiment 4: Comparison with Baseline Model(s)
+One of the drawbacks of using a GAN is that they typically take a long time to train-- is the tradeoff of time worth the performance? We utlized the Colorful Image Colorization model as a baseline to compare the results of our Pix2Pix model against. Instead of trying to determine the "true" colors that were present in grayscale image, the Colorful Image Colorization tries to generate a plausible coloring of the image and impose it onto the original instead of generating it from scratch. This model takes under 30 seconds to run, so it's a much more efficient alternative to Pix2Pix. We ran this model with a subset of the testing data from the NCD to see that... 
+
+TODO Results
 
 ### Experiment 5: Assessment of Performance on Landscapes Dataset
+Since the Landscapes dataset was much larger than and incredibly different from NCD, we were curious to see how well a model that we had optimized for and trained on NCD would generate images given a grayscale landscape image. 
 
-### Experiment 6: Resiliency of Model (on Noisy Data)
-
-### Experiment 7: Addition of Unsupervised Regularization Involving Data Augmentation
+TODO Results
 
 ## Special FX Style Transfer
 
@@ -74,15 +87,25 @@ Commands for training
 
 ### Experiment 1: Running Open-Source Implementation 
 
-### Experiment 2: Tuning Hyperparameters
+### Experiment 2: Higher Image Resolution
 
-## Common Issues and Advice
-TODO Talk about long training times, issues with path, sort of like FAQ
+### Experiment 3: Expanded Star Wars Dataset
+
+### Experiment 4: Batch size and Longer Training
 
 ## References
-Our doc? 
+Some useful references: 
+- Anwar, S., Tahir, M., Li, C., Mian, A., Khan, F. S., & Muzaffar, A. W. (2020). Image colorization: A survey and dataset. arXiv preprint arXiv:2008.10774.
 
+- Google. (2020, February 10). Common problems | generative adversarial networks | google developers. Google. Retrieved March 5, 2022, from [https://developers.google.com/machine-learning/gan/problems](https://developers.google.com/machine-learning/gan/problems)
 
+- Greg, D. & Veerapaneni, R. (2018, January 10). Tricking Neural Networks: Create your own Adversarial Examples. Medium. Retrieved March 5, from [https://medium.com/@ml.at.berkeley/tricking-neural-networks-create-your-own-adversarial-examples-a61eb7620fd8](https://medium.com/@ml.at.berkeley/tricking-neural-networks-create-your-own-adversarial-examples-a61eb7620fd8)
 
+- Lee, M. and Seok, J. (2020). Regularization Methods for Generative Adversarial Networks: An Overview of Recent Studies. ArXiv.
 
+- Smith, T. (2019, October 23). Colorizing images with a convolutional neural network. Medium. Retrieved March 5, 2022, from [https://towardsdatascience.com/colorizing-images-with-a-convolutional-neural-network-3692d71956e2](https://towardsdatascience.com/colorizing-images-with-a-convolutional-neural-network-3692d71956e2)
+
+- Žeger, I., Grgic, S., Vuković, J., & Šišul, G. (2021). Grayscale Image Colorization Methods: Overview and Evaluation. IEEE Access.
+
+- Zhang, R., Isola, P., & Efros, A. A. (2016, October). Colorful image colorization. In European conference on computer vision (pp. 649-666). Springer, Cham.
 
