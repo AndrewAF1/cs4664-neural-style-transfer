@@ -75,7 +75,7 @@ TODO Results
 ### Experiment 5: Assessment of Performance on Landscapes Dataset
 Since the Landscapes dataset was much larger than and incredibly different from NCD, we were curious to see how well a model that we had optimized for and trained on NCD would generate images given a grayscale landscape image. 
 
-TODO Results
+View best results [here](/default_pix2pix_intermediate_results)!
 
 
 ## Special FX Style Transfer
