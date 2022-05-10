@@ -19,8 +19,13 @@ There are also a lot of different tools and techniques that can be used to imple
 This repository contains code, documentation, dataset, and results for a Pix2Pix model that translates black-and-white images to color and a CycleGAN model that attempts to do a style transfer so that older movies are updated with modern day effects. The source code for both models is credited to [Jun-Yan Zhu](https://github.com/junyanz)  and [Taesung Park](https://github.com/taesungp) and was supported by [Tongzhou Wang](https://github.com/SsnL). Our team-- Andrew Farabow, Aditi Diwan, and Nivi Ramalingam-- updated their work with datasets and code that we used to run experiments on both models that can be used to further understand how GANs work. The results can also be found within the repository. 
 
 ## Table of Contents
-Last add clickable links; optional
-
+1. [Getting Started](#getting-started)
+2. [Black and White to Color](#black-and-white-to-color)
+      * [Data Preprocessing](#data-pre-processing)
+      * [Training](#training)
+      * [Experiment 1](#experiment-1-running-open-source-implementation-with-ncd)
+      * [Experiment 2](#experiment-2-hyperparameter-optimization)
+3. 
 ## Getting Started
 Before working with the code, ensure that the following pre-requisites are met:
 -  Linux or macOS
