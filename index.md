@@ -60,10 +60,10 @@ Now you are ready to begin working with your models!
 The Pix2Pix model that's available through this repository can handle multiple types of translation problems-- we'll specifically be looking at taking black-and-white images and colorizing them. We've provided a Natural Color Dataset (NCD) filled with paired images of different fruits and vegetables with over 700 images and the Landscapes dataset with over 7,000 images for training and testing. You're free to use your own data, but make sure that the data is organized into the correct structure so that the model will be able to access it. From there, train the model with the paired dataset. In the interest of understanding how this model works, we've also included a few experiments we ran and what the results meant to us. 
 
 ### Data Pre-Processing
-If you do choose to use your own dataset, there will be some pre-processing in the form directory structures that need to be done. TODO 
+There was no preprocessing necessary outside of the implementation. The model performs it's own preprocessing like scaling the image to 256x256 dimensions.
 
 ### Training
-Commands for training; for best results, train for...; talk about visdom server TODO
+Commands can be seen in [pytorch documentation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/scripts) for the colorization model. Commands used in following experiments were based off of the ones in `train_colorization.sh` and `test_colorization.sh`.
 
 ### Experiment 1: Running Open-Source Implementation with NCD
 We recommend that you run this experiment as well--by running the implementation with NCD, we were able to gain insight into how the default model functions. Note that we had trouble running the model on our local computers, so we switched over to Virginia Tech's Advanced Research Computing (ARC) systems so that we could use the GPUs to speed up training time. We then had to restructure the NCD (see above) before running the model so that it would be able to find the images. Originally, we ran the ```combine.py``` to combine the grayscale and color pairs before feeding them into the model; we discovered later that although this step is necessary for the other translations, it caused color bleeding and other issues when used for the colorization model. 
