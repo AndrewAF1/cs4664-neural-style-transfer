@@ -65,22 +65,21 @@ We had two runs of this experiment. In the initial run, we focused on all aforem
 
 In the second run of this experiment, we tried to have a more focused approach. We used the default learning rate as a baseline and chose value close to it and a value a bit further from it. We also increased the total number of epochs to 50 to allow our model to train gain more exposure to the dataset while still allowing us to train in a reasonable window of time. We found that the ratio of epochs still did not same to make much of a difference in performance of the model. 
 
-TODO Done?
+We also have some results [here](/default_pix2pix_intermediate_results/index.html) demonstrating intermediate results of the default model with 50 epochs that we had looked at as part of this experiment.
+
 
 ### Experiment 3: Comparison of Generator/Discriminator Architectures
-There are multiple different architectures that the generator and discriminator models can have. As an extension of the previous experiment, we tried training our model with the optimal hyper parameters with the architectures...
-
-TODO Complete
+There are multiple different architectures that the generator and discriminator models can have. As an extension of the previous experiment, we tried training our model with the optimal hyper parameters by going down the list of possible options we could use for the generator architectures. We were able to successfully train the model, but came across issues when we tried to test the models. All of the except the default model threw errors, which we were unable to fix in the given time frame, but aim to fix in further experimentation.
 
 ### Experiment 4: Comparison with Baseline Model(s)
-One of the drawbacks of using a GAN is that they typically take a long time to train-- is the tradeoff of time worth the performance? We utlized the Colorful Image Colorization model as a baseline to compare the results of our Pix2Pix model against. Instead of trying to determine the "true" colors that were present in grayscale image, the Colorful Image Colorization tries to generate a plausible coloring of the image and impose it onto the original instead of generating it from scratch. This model takes under 30 seconds to run, so it's a much more efficient alternative to Pix2Pix. We ran this model with a subset of the testing data from the NCD to see that... 
+One of the drawbacks of using a GAN is that they typically take a long time to train-- is the tradeoff of time worth the performance? We utlized the Colorful Image Colorization model as a baseline to compare the results of our Pix2Pix model against. Instead of trying to determine the "true" colors that were present in grayscale image, the Colorful Image Colorization tries to generate a plausible coloring of the image and impose it onto the original instead of generating it from scratch. This model takes under 30 seconds to run, so it's a much more efficient alternative to Pix2Pix. We ran this model with a subset of the testing data from the NCD to see that while it performed well, pix2pix created a depiction that was closer to the true image. One of the baseline models, however, did perform better in terms of maintaining the same structural similarity to the original image. A sample image from NCD colored by different models is displated below.
 
-TODO Results
+
+<img src="https://user-images.githubusercontent.com/56567536/167536438-9a7b3524-6ead-42da-944e-e6ca25ebbb64.png">
+
 
 ### Experiment 5: Assessment of Performance on Landscapes Dataset
-Since the Landscapes dataset was much larger than and incredibly different from NCD, we were curious to see how well a model that we had optimized for and trained on NCD would generate images given a grayscale landscape image. 
-
-View best results [here](/default_pix2pix_intermediate_results/index.html)!
+Since the Landscapes dataset was much larger than and incredibly different from NCD, we were curious to see how well a model that we had optimized for and trained on NCD would generate images given a grayscale landscape image. Due to time constraints as well as delays in debugging technical issues, we were unable to perform this experiment in time.
 
 
 ## Special FX Style Transfer
