@@ -1,5 +1,3 @@
-# Experimentation of Image-To-Image Translation
-
 Welcome! So you're interested computer vision-- where do you start? **Image-to-image translation** is a specific class of vision and graphics problems that can help introduce you into the field. First, let's define what image-to-image translation is: given images in some source domain A, the goal is to map the image into some target domain B while still retaining the content representations. It's analagous to how we might use technology like Google Translate to translate sentences from English to Spanish so that they have the same meaning. Effective deep learning models can do this translation much quicker and more efficiently than the average person. 
 
 There are several applications of image-to-image translation due to its applicability to multiple domains.  Existing methods include those for 
@@ -82,6 +80,8 @@ TODO Results
 
 ## Special FX Style Transfer
 The goal of this experiment was to see if we could automatically remaster classic movies by training an unpaired GAN with screenshots from visually-similar movies from different eras. We chose the Star Wars series, as movies IV-VI and VII-IX depict similar things but were made over 30 years apart and thus feature very different visual effects. 
+
+View best results [here](/SW_CycleGAN_fulldataset_512pix/index.html)!
 
 ### Data Pre-Processing
 We used a script located in the `data` directory to chop the movies up into frames that we provided to the GAN. We also chose to downscale the images to speed up training time, since this is just a proof-of-concept.
