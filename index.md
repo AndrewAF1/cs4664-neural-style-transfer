@@ -25,7 +25,17 @@ This repository contains code, documentation, dataset, and results for a Pix2Pix
       * [Training](#training)
       * [Experiment 1](#experiment-1-running-open-source-implementation-with-ncd)
       * [Experiment 2](#experiment-2-hyperparameter-optimization)
-3. 
+      * [Experiment 3](#experiment-3-comparison-of-generatordiscriminator-architectures)
+      * [Experiment 4](#experiment-4-comparison-with-baseline-models)
+      * [Experiment 5](#experiment-5-assessment-of-performance-on-landscapes-dataset)
+3. [Special FX Style Transfer](#special-fx-style-transfer)
+      * [Data Preprocessing](#data-pre-processing-1)
+      * [Training](#training-1)
+      * [Experiment 1](#experiment-1-running-open-source-implementation)
+      * [Experiment 2](#experiment-2-higher-image-resolution)
+      * [Experiment 3](#experiment-3-expanded-star-wars-dataset)
+      * [Experiment 4](#experiment-4-batch-size-and-longer-training)
+5. [References](#references)
 ## Getting Started
 Before working with the code, ensure that the following pre-requisites are met:
 -  Linux or macOS
