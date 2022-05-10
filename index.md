@@ -79,19 +79,28 @@ Since the Landscapes dataset was much larger than and incredibly different from 
 
 TODO Results
 
+
 ## Special FX Style Transfer
+The goal of this experiment was to see if we could automatically remaster classic movies by training an unpaired GAN with screenshots from visually-similar movies from different eras. We chose the Star Wars series, as movies IV-VI and VII-IX depict similar things but were made over 30 years apart and thus feature very different visual effects. 
 
 ### Data Pre-Processing
+We used a script located in the `data` directory to chop the movies up into frames that we provided to the GAN. We also chose to downscale the images to speed up training time, since this is just a proof-of-concept.
 
 ### Training
+Scripts to run all of these experiments are located in the `starwars_scripts directory`.
 
 ### Experiment 1: Running Open-Source Implementation 
+For the first experiment, we simply ran the model on images downscaled to 286 pixels to produce some preliminary results.
+See `starwars_scripts/test_SW_CycleGAN_reduceddataset_512pix.sh`
 
 ### Experiment 2: Higher Image Resolution
+For our next experiment, we attempted to use higher-resolution images to see if that would make changes by the model more apparent. This experiment can be recreated by comparing the results of `starwars_scripts/train_SW_CycleGAN_reduceddataset_256pix.sh` and `starwars_scripts/train_SW_CycleGAN_fulldataset_512pix.sh`
 
 ### Experiment 3: Expanded Star Wars Dataset
+Next, we expanded the size of the datset to include all 6 movies instead of just Episode IV and Episode VII. This led to much better results, shown on the results tab of this website. To recreate, run `starwars_scripts/train_SW_CycleGAN_reduceddataset_512pix.sh` and `starwars_scripts/train_SW_CycleGAN_fulldataset_512pix.sh`
 
 ### Experiment 4: Batch size and Longer Training
+It turns out, increasing the batch size creates much blurrier images in the same amount of training time. If you want to see for yourself, `starwars_scripts/train_SW_CycleGAN_fulldataset_512_batch4pix.sh`
 
 ## References
 Some useful references: 
